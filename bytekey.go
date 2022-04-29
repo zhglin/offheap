@@ -28,8 +28,11 @@ func NewByteKeyHashTable(initialSize int64) *ByteKeyHashTable {
 }
 
 // InsertBK is the insert function for []byte keys. By default only len(Key_t) bytes are used in the key.
+// 是字节键[]的插入函数。默认情况下，密钥只使用len(Key_t)字节。
+// 取出来的数据没有校验key是否相等，只校验hash值是否相等
 func (t *ByteKeyHashTable) InsertBK(bytekey []byte, value interface{}) bool {
 	xxHasher64.Reset()
+	// hash值的计算用key_t的长度
 	min := minimum(len(Key_t{}), len(bytekey))
 	_, err := xxHasher64.Write(bytekey[:min])
 	if err != nil {

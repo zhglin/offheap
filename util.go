@@ -11,6 +11,7 @@ func upper_power_of_two32(v uint32) uint32 {
 	return v
 }
 
+// 下一个2倍大小的数
 func upper_power_of_two(v uint64) uint64 {
 	v--
 	v |= v >> 1
